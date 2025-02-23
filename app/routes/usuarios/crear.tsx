@@ -1,6 +1,7 @@
 import { Button, Card, Input, PasswordInput } from "@mantine/core";
 import { Form, Link, redirect, type ActionFunctionArgs } from "react-router";
 import { db , users } from "~/db/db";
+import { encriptarPassword } from "~/utils/password";
 
 
 
@@ -8,6 +9,7 @@ export const action = async ({request} : ActionFunctionArgs) => {
     
     const formData = await request.formData();
     const data = Object.fromEntries(formData) as unknown as typeof users.$inferInsert;
+    data.password = await encriptarPassword(data.password);
     const result = await db.insert(users).values(data);
     return redirect("/usuarios");
 }

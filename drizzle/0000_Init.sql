@@ -1,6 +1,6 @@
 CREATE TABLE `tareas` (
 	`id` int AUTO_INCREMENT NOT NULL,
-	`tarea` varchar(255) NOT NULL DEFAULT '0',
+	`tarea` varchar(255) NOT NULL,
 	`obs` text,
 	`estado` enum('Pendiente','Ejecutada') NOT NULL DEFAULT 'Pendiente',
 	`user_id` int NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `tareas` (
 CREATE TABLE `users` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`nombre` varchar(50) NOT NULL,
-	`password` varchar(50) NOT NULL,
+	`password` varchar(255) NOT NULL,
 	`usuario` varchar(50) NOT NULL,
 	`updated_at` timestamp,
 	`created_at` timestamp NOT NULL DEFAULT (now()),

@@ -8,7 +8,7 @@ const timestamps = {
 
 export const tareas = mysqlTable("tareas", {
 	id: int().autoincrement().notNull(),
-	tarea: varchar({ length: 255 }).default('0').notNull(),
+	tarea: varchar({ length: 255 }).notNull(),
 	obs: text(),
 	estado: mysqlEnum(['Pendiente','Ejecutada']).default('Pendiente').notNull(),
 	userId: int("user_id").notNull().references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" } ),
@@ -21,7 +21,7 @@ export const tareas = mysqlTable("tareas", {
 export const users = mysqlTable("users", {
 	id: int().autoincrement().notNull(),
 	nombre: varchar({ length: 50 }).notNull(),
-	password: varchar({ length: 50 }).notNull(),
+	password: varchar({ length: 255 }).notNull(),
 	usuario: varchar({ length: 50 }).notNull(),
 	...timestamps,
 },

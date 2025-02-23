@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "51bb338a-b4ae-4816-841a-537efea4b5f6",
+  "id": "6ddbe74b-5600-4dc5-bc66-759153d066bb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "tareas": {
@@ -19,8 +19,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'0'"
+          "autoincrement": false
         },
         "obs": {
           "name": "obs",
@@ -106,7 +105,7 @@
         },
         "password": {
           "name": "password",
-          "type": "varchar(50)",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
