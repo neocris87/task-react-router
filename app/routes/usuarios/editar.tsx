@@ -3,9 +3,17 @@ import { eq } from "drizzle-orm";
 import { Form, Link, redirect, useLoaderData, useParams, type ActionFunctionArgs, type LoaderFunctionArgs } from "react-router"
 import { db, users } from "~/db/db";
 import { encriptarPassword } from "~/utils/password";
+import type { Route } from "./+types/editar";
 
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export function meta({}: Route.MetaArgs) {
+    return [
+      { title: "Editar Usuario" },
+      { name: "description", content: "Welcome to React Router!" },
+    ];
+  }
+
+export async function loader({ params  }: LoaderFunctionArgs) {
     const usuario = await db.query.users.findFirst({
         where: eq(users.id, parseInt(params.id!))
     });
@@ -42,7 +50,7 @@ export default function Editar() {
     const { usuario } = useLoaderData<typeof loader>()
 
     return (
-        <div className="max-w-7xl mx-auto mt-5">
+        <div className="max-w-7xl mx-auto mt-5 px-2">
 
             <div className="flex flex-row justify-between items-center">
                 <h1 className="text-2xl font-bold">Editar Usuario {usuario?.id}</h1>

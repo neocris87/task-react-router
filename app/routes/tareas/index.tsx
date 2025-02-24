@@ -1,9 +1,19 @@
 import { Button, Table } from "@mantine/core";
 import { Link } from "react-router";
+import type { Route } from "./+types";
+
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Lista Tareas" },
+    { name: "description", content: "Welcome to React Router!" },
+  ];
+}
 
 export default function TareasIndex() {
     return (
-        <div className="max-w-7xl mx-auto mt-5">
+        
+      <div className="max-w-7xl mx-auto mt-5 px-2">
 
       <div className="flex flex-row justify-between items-center">
         <h1 className="text-2xl font-bold">Tareas</h1>

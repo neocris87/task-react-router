@@ -1,5 +1,5 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
+import logoDark from "~/image/logo-dark.svg";
+import logoLight from "~/image/logo-light.svg";
 
 export function Welcome() {
   return (
@@ -17,6 +17,8 @@ export function Welcome() {
               alt="React Router"
               className="hidden w-full dark:block"
             />
+
+            
           </div>
         </header>
         <div className="max-w-[300px] w-full space-y-6 px-4">

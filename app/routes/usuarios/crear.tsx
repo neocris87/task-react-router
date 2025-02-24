@@ -1,23 +1,29 @@
 import { Button, Card, Input, PasswordInput } from "@mantine/core";
-import { Form, Link, redirect, type ActionFunctionArgs } from "react-router";
+import { Form, Link, redirect } from "react-router";
 import { db , users } from "~/db/db";
 import { encriptarPassword } from "~/utils/password";
+import type { Route } from "./+types/crear";
 
+export function meta({}: Route.MetaArgs) {
+    return [
+      { title: "Crear Usuario" },
+      { name: "description", content: "Welcome to React Router!" },
+    ];
+  }
 
-
-export const action = async ({request} : ActionFunctionArgs) => {
+export const action = async ({request} : Route.ActionArgs) => {
     
     const formData = await request.formData();
     const data = Object.fromEntries(formData) as unknown as typeof users.$inferInsert;
     data.password = await encriptarPassword(data.password);
-    const result = await db.insert(users).values(data);
+    await db.insert(users).values(data);
     return redirect("/usuarios");
 }
 
 
 export default function UsuariosCrear() {
     return (
-        <div className="max-w-7xl mx-auto mt-5">
+        <div className="max-w-7xl mx-auto mt-5 px-2">
             
             <div className="flex flex-row justify-between items-center">
                 <h1 className="text-2xl font-bold">Crear Usuario</h1>

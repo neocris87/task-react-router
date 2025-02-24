@@ -3,6 +3,7 @@ import {
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
 } from "react-router";
@@ -12,7 +13,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import '@mantine/core/styles.css';
 
-import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
+import { ColorSchemeScript, createTheme, MantineProvider , mantineHtmlProps  } from "@mantine/core";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,22 +28,21 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-const theme = createTheme({
-});
+const theme = createTheme({});
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" {...mantineHtmlProps}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
+        <ColorSchemeScript />
         <Meta />
         <Links />
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <ColorSchemeScript />
           {children}
         </MantineProvider>
         <ScrollRestoration />
